@@ -223,6 +223,17 @@ def test_extension_turn_off_and_on_keeps_pairing():
     assert client.patch('/api/v1/extensions/'+eid,headers=h,json={'paused':False}).status_code==404  # removed browsers need a new code
     eh2=paired(h);assert client.get('/api/v1/extensions/policy',headers=eh2).status_code==200  # same parent can pair again
 
+def test_paired_browser_can_move_to_a_new_parent_account():
+    # Parent forgot the old account and made a new one: the extension pairs with the new code, then releases the old pairing.
+    old,_=account('forgot-old@example.test');new,_=account('forgot-new@example.test')
+    eh_old=paired(old);eh_new=paired(new)
+    assert client.post('/api/v1/extensions/self/release',headers=eh_old).status_code==204
+    assert client.get('/api/v1/extensions/policy',headers=eh_old).status_code==401
+    assert client.get('/api/v1/extensions/policy',headers=eh_new).status_code==200
+    assert client.get('/api/v1/extensions',headers=old).json()[0]['status']=='revoked'
+    assert client.get('/api/v1/extensions',headers=new).json()[0]['status']!='revoked'
+    assert client.post('/api/v1/extensions/self/release').status_code==401  # needs an extension token
+
 
 # ---- v3 additions ----
 def test_repeat_detection_on_same_page_is_deduplicated():

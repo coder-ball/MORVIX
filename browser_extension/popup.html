@@ -6,8 +6,14 @@
   <div id="state" class="status">Checking…</div>
   <dl id="details"></dl>
   <div id="page" class="page"></div>
-  <section id="pairing"><label for="code">Pair with the parent dashboard</label><input id="code" placeholder="Paste pairing code"><button id="pair">Pair extension</button></section>
+  <section id="pairing">
+    <label for="code" id="pairLabel">Pair with the parent dashboard</label>
+    <div id="repairNote" class="note" hidden>Paste a pairing code from the new parent account. This browser stops reporting to the current account once the new code is accepted.</div>
+    <input id="code" placeholder="Paste pairing code"><button id="pair">Pair extension</button>
+    <button id="cancelRepair" class="link" hidden>Cancel</button>
+  </section>
   <button id="sync">Sync policy</button>
+  <button id="repair" class="link" hidden>Connect to a different parent account</button>
   <p>Parent dashboard: <a href="http://127.0.0.1:8000/" target="_blank">127.0.0.1:8000</a></p>
   <div id="msg"></div>
 </main>

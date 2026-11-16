@@ -22,6 +22,10 @@ button{cursor:pointer;font-weight:600;color:#fff;background:#5b5bd6;border-color
 button:hover{background:#4f4fc8}
 #sync{margin-top:12px;background:#fff;color:#1d2130;border-color:#e7e9ef;font-weight:550}
 #sync:hover{background:#fafbfc}
+button.link{background:none;border:none;color:#5b5bd6;font-weight:600;font-size:12px;padding:4px 0;margin:6px 0 0;text-align:left;width:auto}
+button.link:hover{background:none;text-decoration:underline}
+.note{font-size:12px;color:#4d5466;background:#fff;border:1px solid #e7e9ef;border-radius:9px;padding:8px 10px;margin-bottom:8px}
+[hidden]{display:none!important}
 p{font-size:12px;color:#8a90a0;margin:8px 0 0}
 p a{color:#5b5bd6;font-weight:600;text-decoration:none}
 #msg{color:#a73b4e;font-size:12px;margin-top:6px}

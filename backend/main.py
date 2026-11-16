@@ -641,6 +641,14 @@ def revoke(eid: str, uid: str = Depends(auth)):
         raise HTTPException(404, "Extension not found")
 
 
+@app.post("/api/v1/extensions/self/release", status_code=204)
+def release_self(ext: dict = Depends(ext_auth)):
+    """Called by the extension with its OLD token after it was paired to a different parent account,
+    so the old account lists this browser as removed instead of 'disconnected'."""
+    with db() as c:
+        c.execute("UPDATE extensions SET revoked=1 WHERE id=?", (ext["id"],))
+
+
 def ext_paused(ext, modality):
     return skipped(modality, "This browser's protection is turned off by the parent") if ext.get("paused") else None
 

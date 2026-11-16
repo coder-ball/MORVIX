@@ -33,13 +33,26 @@ function draw(x) {
       const mods = policy ? Object.entries(policy.modalities || {}).filter(([, on]) => on).map(([m]) => m).join(', ') || 'none' : '—';
       $('#details').innerHTML = el('Connection', connected ? 'Connected' : 'Disconnected') + el('Protection', policy?.paused ? 'Off for this browser' : policy?.enabled ? 'On' : 'Off') + el('Checking', policy?.enabled ? mods : 'none') + el('Last sync', x.lastSync ? new Date(x.lastSync).toLocaleTimeString() : 'never');
     } else $('#details').innerHTML = '<dd style="grid-column:1/-1;text-align:left;font-weight:400;color:#4d5466">' + (x?.connectionError === 'removed' ? 'This browser was removed in the parent dashboard. ' : '') + 'In the parent dashboard choose <b>Generate pairing code</b>, then paste the code below.</dd>';
-    $('#pairing').hidden = !!x?.token;
+    // Already paired: the code box stays hidden unless the parent chose to move this browser to another account.
+    $('#pairing').hidden = !!x?.token && !repairing;
+    $('#repair').hidden = !x?.token || repairing;
+    $('#repairNote').hidden = $('#cancelRepair').hidden = !(x?.token && repairing);
+    $('#pairLabel').textContent = x?.token && repairing ? 'Connect to a different parent account' : 'Pair with the parent dashboard';
+    $('#pair').textContent = x?.token && repairing ? 'Switch account' : 'Pair extension';
     chrome.tabs.query({ active: true, currentWindow: true }, tabs => { $('#page').textContent = x?.token ? pageStatus(x, tabs?.[0]?.url || '') : ''; });
   }
 }
+let repairing = false;
+function setRepairing(on) { repairing = on; $('#code').value = ''; say('', true); status(false); if (on) $('#code').focus(); }
 status();
+$('#repair').onclick = () => setRepairing(true);
+$('#cancelRepair').onclick = () => setRepairing(false);
 $('#pair').onclick = () => chrome.runtime.sendMessage({ type: 'pair', code: $('#code').value.trim() }, r => {
-  if (!r?.ok) say(r?.error || 'Could not pair', false); else { say('Paired and synchronized', true); status(false); }
+  if (!r?.ok) return say(r?.error || 'Could not pair', false);
+  const switched = repairing;
+  repairing = false; $('#code').value = '';
+  status(false);
+  say(switched ? 'Connected to the new parent account' : 'Paired and synchronized', true);
 });
 $('#sync').onclick = () => chrome.runtime.sendMessage({ type: 'sync' }, r => { status(false); say(r?.connected ? 'Policy synchronized' : 'MORVIX server unavailable; the last policy stays in effect', !!r?.connected); });
 function say(text, ok) { $('#msg').textContent = text; $('#msg').style.color = ok ? '#24785a' : '#a73b4e'; }
