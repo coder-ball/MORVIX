@@ -1,0 +1,563 @@
+{
+  "dataset": "text_seed_v1.csv",
+  "threshold": 0.5,
+  "evaluated_at": "2026-11-10",
+  "results": {
+    "morvix-text-ensemble": {
+      "labels": [
+        "Graphic Violence",
+        "Self-harm Indicators",
+        "Threat Language",
+        "None"
+      ],
+      "matrix": {
+        "Graphic Violence": {
+          "Graphic Violence": 38,
+          "Self-harm Indicators": 0,
+          "Threat Language": 1,
+          "None": 1
+        },
+        "Self-harm Indicators": {
+          "Graphic Violence": 1,
+          "Self-harm Indicators": 38,
+          "Threat Language": 1,
+          "None": 0
+        },
+        "Threat Language": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 35,
+          "None": 5
+        },
+        "None": {
+          "Graphic Violence": 3,
+          "Self-harm Indicators": 3,
+          "Threat Language": 2,
+          "None": 72
+        }
+      },
+      "per_label": {
+        "Graphic Violence": {
+          "precision": 0.9048,
+          "recall": 0.95,
+          "f1": 0.9268,
+          "support": 40
+        },
+        "Self-harm Indicators": {
+          "precision": 0.9268,
+          "recall": 0.95,
+          "f1": 0.9383,
+          "support": 40
+        },
+        "Threat Language": {
+          "precision": 0.8974,
+          "recall": 0.875,
+          "f1": 0.8861,
+          "support": 40
+        },
+        "None": {
+          "precision": 0.9231,
+          "recall": 0.9,
+          "f1": 0.9114,
+          "support": 80
+        }
+      },
+      "samples": 200,
+      "accuracy": 0.915,
+      "macro_f1": 0.9156,
+      "harmful_detection_rate": 0.95,
+      "false_positive_rate": 0.1
+    },
+    "morvix-lexicon-v1": {
+      "labels": [
+        "Graphic Violence",
+        "Self-harm Indicators",
+        "Threat Language",
+        "None"
+      ],
+      "matrix": {
+        "Graphic Violence": {
+          "Graphic Violence": 2,
+          "Self-harm Indicators": 0,
+          "Threat Language": 0,
+          "None": 38
+        },
+        "Self-harm Indicators": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 9,
+          "Threat Language": 0,
+          "None": 31
+        },
+        "Threat Language": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 10,
+          "None": 30
+        },
+        "None": {
+          "Graphic Violence": 1,
+          "Self-harm Indicators": 1,
+          "Threat Language": 0,
+          "None": 78
+        }
+      },
+      "per_label": {
+        "Graphic Violence": {
+          "precision": 0.6667,
+          "recall": 0.05,
+          "f1": 0.093,
+          "support": 40
+        },
+        "Self-harm Indicators": {
+          "precision": 0.9,
+          "recall": 0.225,
+          "f1": 0.36,
+          "support": 40
+        },
+        "Threat Language": {
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4,
+          "support": 40
+        },
+        "None": {
+          "precision": 0.4407,
+          "recall": 0.975,
+          "f1": 0.607,
+          "support": 80
+        }
+      },
+      "samples": 200,
+      "accuracy": 0.495,
+      "macro_f1": 0.365,
+      "harmful_detection_rate": 0.175,
+      "false_positive_rate": 0.025
+    },
+    "MoritzLaurer/deberta-v3-base-zeroshot-v2.0": {
+      "labels": [
+        "Graphic Violence",
+        "Self-harm Indicators",
+        "Threat Language",
+        "None"
+      ],
+      "matrix": {
+        "Graphic Violence": {
+          "Graphic Violence": 38,
+          "Self-harm Indicators": 0,
+          "Threat Language": 1,
+          "None": 1
+        },
+        "Self-harm Indicators": {
+          "Graphic Violence": 3,
+          "Self-harm Indicators": 19,
+          "Threat Language": 3,
+          "None": 15
+        },
+        "Threat Language": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 35,
+          "None": 5
+        },
+        "None": {
+          "Graphic Violence": 2,
+          "Self-harm Indicators": 0,
+          "Threat Language": 2,
+          "None": 76
+        }
+      },
+      "per_label": {
+        "Graphic Violence": {
+          "precision": 0.8837,
+          "recall": 0.95,
+          "f1": 0.9157,
+          "support": 40
+        },
+        "Self-harm Indicators": {
+          "precision": 1.0,
+          "recall": 0.475,
+          "f1": 0.6441,
+          "support": 40
+        },
+        "Threat Language": {
+          "precision": 0.8537,
+          "recall": 0.875,
+          "f1": 0.8642,
+          "support": 40
+        },
+        "None": {
+          "precision": 0.7835,
+          "recall": 0.95,
+          "f1": 0.8588,
+          "support": 80
+        }
+      },
+      "samples": 200,
+      "accuracy": 0.84,
+      "macro_f1": 0.8207,
+      "harmful_detection_rate": 0.825,
+      "false_positive_rate": 0.05
+    },
+    "KoalaAI/Text-Moderation": {
+      "labels": [
+        "Graphic Violence",
+        "Self-harm Indicators",
+        "Threat Language",
+        "None"
+      ],
+      "matrix": {
+        "Graphic Violence": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 0,
+          "None": 40
+        },
+        "Self-harm Indicators": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 14,
+          "Threat Language": 0,
+          "None": 26
+        },
+        "Threat Language": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 0,
+          "None": 40
+        },
+        "None": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 1,
+          "Threat Language": 0,
+          "None": 79
+        }
+      },
+      "per_label": {
+        "Graphic Violence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        },
+        "Self-harm Indicators": {
+          "precision": 0.9333,
+          "recall": 0.35,
+          "f1": 0.5091,
+          "support": 40
+        },
+        "Threat Language": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        },
+        "None": {
+          "precision": 0.427,
+          "recall": 0.9875,
+          "f1": 0.5962,
+          "support": 80
+        }
+      },
+      "samples": 200,
+      "accuracy": 0.465,
+      "macro_f1": 0.2763,
+      "harmful_detection_rate": 0.1167,
+      "false_positive_rate": 0.0125
+    },
+    "sentinet/suicidality": {
+      "labels": [
+        "Graphic Violence",
+        "Self-harm Indicators",
+        "Threat Language",
+        "None"
+      ],
+      "matrix": {
+        "Graphic Violence": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 6,
+          "Threat Language": 0,
+          "None": 34
+        },
+        "Self-harm Indicators": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 38,
+          "Threat Language": 0,
+          "None": 2
+        },
+        "Threat Language": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 9,
+          "Threat Language": 0,
+          "None": 31
+        },
+        "None": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 4,
+          "Threat Language": 0,
+          "None": 76
+        }
+      },
+      "per_label": {
+        "Graphic Violence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        },
+        "Self-harm Indicators": {
+          "precision": 0.6667,
+          "recall": 0.95,
+          "f1": 0.7835,
+          "support": 40
+        },
+        "Threat Language": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        },
+        "None": {
+          "precision": 0.5315,
+          "recall": 0.95,
+          "f1": 0.6816,
+          "support": 80
+        }
+      },
+      "samples": 200,
+      "accuracy": 0.57,
+      "macro_f1": 0.3663,
+      "harmful_detection_rate": 0.4417,
+      "false_positive_rate": 0.05
+    },
+    "unitary/toxic-bert": {
+      "labels": [
+        "Graphic Violence",
+        "Self-harm Indicators",
+        "Threat Language",
+        "None"
+      ],
+      "matrix": {
+        "Graphic Violence": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 0,
+          "None": 40
+        },
+        "Self-harm Indicators": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 0,
+          "None": 40
+        },
+        "Threat Language": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 16,
+          "None": 24
+        },
+        "None": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 0,
+          "None": 80
+        }
+      },
+      "per_label": {
+        "Graphic Violence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        },
+        "Self-harm Indicators": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        },
+        "Threat Language": {
+          "precision": 1.0,
+          "recall": 0.4,
+          "f1": 0.5714,
+          "support": 40
+        },
+        "None": {
+          "precision": 0.4348,
+          "recall": 1.0,
+          "f1": 0.6061,
+          "support": 80
+        }
+      },
+      "samples": 200,
+      "accuracy": 0.48,
+      "macro_f1": 0.2944,
+      "harmful_detection_rate": 0.1333,
+      "false_positive_rate": 0.0
+    }
+  },
+  "ensemble_errors": [
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "direct",
+      "decided_by": null,
+      "text": "Keep talking and see what happens to you after school."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.4148,
+      "kind": "direct",
+      "decided_by": [
+        "MoritzLaurer/deberta-v3-base-zeroshot-v2.0"
+      ],
+      "text": "Say goodbye to your friends, you won't see them after this weekend."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.2275,
+      "kind": "direct",
+      "decided_by": [
+        "MoritzLaurer/deberta-v3-base-zeroshot-v2.0"
+      ],
+      "text": "Watch what happens when you're walking home alone."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "online",
+      "decided_by": null,
+      "text": "You have 24 hours to send the money or the pictures go out and so do you."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "online",
+      "decided_by": null,
+      "text": "I know your schedule. Don't be surprised when I'm waiting."
+    },
+    {
+      "truth": "Self-harm Indicators",
+      "predicted": "Threat Language",
+      "confidence": 0.5167,
+      "kind": "ideation",
+      "decided_by": [
+        "MoritzLaurer/deberta-v3-base-zeroshot-v2.0"
+      ],
+      "text": "there's no way out of this except dying"
+    },
+    {
+      "truth": "Self-harm Indicators",
+      "predicted": "Graphic Violence",
+      "confidence": 0.6795,
+      "kind": "self-injury",
+      "decided_by": [
+        "MoritzLaurer/deberta-v3-base-zeroshot-v2.0"
+      ],
+      "text": "I scratch my skin until it bleeds when I feel empty."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.3756,
+      "kind": "description",
+      "decided_by": [
+        "MoritzLaurer/deberta-v3-base-zeroshot-v2.0"
+      ],
+      "text": "The shooter walked down the aisle firing into the screaming children."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "Threat Language",
+      "confidence": 0.9663,
+      "kind": "description",
+      "decided_by": [
+        "MoritzLaurer/deberta-v3-base-zeroshot-v2.0"
+      ],
+      "text": "He smashed the bottle into her face and glass stuck out of her cheek."
+    },
+    {
+      "truth": "None",
+      "predicted": "Graphic Violence",
+      "confidence": 0.6881,
+      "kind": "hard_negative",
+      "decided_by": [
+        "MoritzLaurer/deberta-v3-base-zeroshot-v2.0"
+      ],
+      "text": "She absolutely killed it on stage last night."
+    },
+    {
+      "truth": "None",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.6737,
+      "kind": "hard_negative",
+      "decided_by": [
+        "morvix-lexicon-v1"
+      ],
+      "text": "Self-harm is more common than people think; here is how to support a friend who is struggling."
+    },
+    {
+      "truth": "None",
+      "predicted": "Graphic Violence",
+      "confidence": 0.5361,
+      "kind": "hard_negative",
+      "decided_by": [
+        "morvix-lexicon-v1"
+      ],
+      "text": "The history lesson covered the massacre at Wounded Knee in 1890."
+    },
+    {
+      "truth": "None",
+      "predicted": "Threat Language",
+      "confidence": 0.9409,
+      "kind": "hard_negative",
+      "decided_by": [
+        "MoritzLaurer/deberta-v3-base-zeroshot-v2.0"
+      ],
+      "text": "My mom will kill me if I'm late again haha."
+    },
+    {
+      "truth": "None",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9656,
+      "kind": "hard_negative",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "My friend felt hopeless last year but therapy really helped her."
+    },
+    {
+      "truth": "None",
+      "predicted": "Graphic Violence",
+      "confidence": 0.6775,
+      "kind": "hard_negative",
+      "decided_by": [
+        "MoritzLaurer/deberta-v3-base-zeroshot-v2.0"
+      ],
+      "text": "Stop the bleeding by applying firm pressure with a clean cloth, then call for help."
+    },
+    {
+      "truth": "None",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9489,
+      "kind": "hard_negative",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "That roller coaster was insane, I thought I was going to die!"
+    },
+    {
+      "truth": "None",
+      "predicted": "Threat Language",
+      "confidence": 0.8592,
+      "kind": "hard_negative",
+      "decided_by": [
+        "MoritzLaurer/deberta-v3-base-zeroshot-v2.0"
+      ],
+      "text": "Please don't threaten your sister with the water balloon, it's rude."
+    }
+  ]
+}

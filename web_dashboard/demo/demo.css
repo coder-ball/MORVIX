@@ -1,0 +1,11 @@
+body{font:16px/1.65 "Segoe UI",system-ui,sans-serif;margin:0;background:#f7f7fb;color:#1f2233}
+header{background:#fff;border-bottom:1px solid #e6e7ef;padding:14px 24px;display:flex;gap:16px;align-items:center}
+header b{letter-spacing:.06em}header a{color:#4f46e5;text-decoration:none;font-size:14px}
+main{max-width:760px;margin:28px auto;padding:0 20px}
+article{background:#fff;border:1px solid #e6e7ef;border-radius:14px;padding:24px 28px}
+h1{font-size:26px;line-height:1.25;margin:0 0 6px}.meta{color:#7a7f95;font-size:13px;margin-bottom:18px}
+.expect{border-radius:10px;padding:10px 14px;margin:0 0 18px;font-size:14px}
+.expect.harm{background:#fff3dc;color:#7a4f06}.expect.safe{background:#e3f6ef;color:#08714f}
+ul.tests{list-style:none;padding:0;display:grid;gap:10px}ul.tests a{display:block;background:#fff;border:1px solid #e6e7ef;border-radius:12px;padding:14px 16px;color:#1f2233;text-decoration:none}
+ul.tests a:hover{border-color:#a5a8f0}ul.tests small{display:block;color:#7a7f95}
+.tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:6px}.tag.h{background:#fde8eb;color:#b0283b}.tag.s{background:#e3f6ef;color:#08714f}

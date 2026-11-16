@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MORVIX extension test pages</title><link rel="stylesheet" href="demo.css"></head>
+<body><header><b>MORVIX TEST PAGES</b><a href="/">Open dashboard</a></header>
+<main>
+<h1>Extension test pages</h1>
+<p class="meta">Short, fictional pages written by the project team. Open each one in a normal Chrome tab with the paired MORVIX extension and check that the result matches the expectation. Every flagged or blocked page should then appear in the dashboard under Detection history and Alerts.</p>
+<ul class="tests">
+  <li><a href="threat.html">Threat in a chat message <span class="tag h">expect warning</span><small>A direct threat against another person.</small></a></li>
+  <li><a href="selfharm.html">Self-harm post <span class="tag h">expect warning</span><small>A first-person post about wanting to die.</small></a></li>
+  <li><a href="violence.html">Graphic description <span class="tag h">expect warning</span><small>A gory description of an injury.</small></a></li>
+  <li><a href="safe.html">Recipe blog <span class="tag s">expect nothing</span><small>Ordinary harmless content.</small></a></li>
+  <li><a href="hotline.html">Crisis-line information <span class="tag s">expect nothing</span><small>Prevention text that mentions suicide but is not harmful.</small></a></li>
+  <li><a href="idiom.html">Sports report with idioms <span class="tag s">expect nothing</span><small>"Killed it", "destroyed the defence", "bury them".</small></a></li>
+</ul>
+<p class="meta">To test <b>blocking</b>: in the dashboard go to Domain &amp; category rules (or Settings) and set a category to <b>Block</b>, or add a website rule blocking <code>127.0.0.1</code>; then reload a page above. To test the <b>offline</b> behaviour, use Stop MORVIX from the Start menu and reload: the extension popup should say the last policy is still in effect.</p>
+</main></body></html>

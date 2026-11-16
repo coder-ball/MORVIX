@@ -1,0 +1,8 @@
+﻿-r requirements.txt
+Pillow==11.1.0
+opencv-python-headless==4.11.0.86
+transformers==4.49.0
+torch>=2.6.0
+huggingface-hub>=0.28.0
+faster-whisper==1.2.1
+av>=14,<17

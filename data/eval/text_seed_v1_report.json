@@ -1,0 +1,950 @@
+{
+  "dataset": "MORVIX text seed set v1 (200 rows)",
+  "threshold": 0.5,
+  "evaluated_at": "2026-11-10",
+  "results": {
+    "morvix-text-ensemble": {
+      "labels": [
+        "Graphic Violence",
+        "Self-harm Indicators",
+        "Threat Language",
+        "None"
+      ],
+      "matrix": {
+        "Graphic Violence": {
+          "Graphic Violence": 2,
+          "Self-harm Indicators": 6,
+          "Threat Language": 0,
+          "None": 32
+        },
+        "Self-harm Indicators": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 40,
+          "Threat Language": 0,
+          "None": 0
+        },
+        "Threat Language": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 8,
+          "Threat Language": 15,
+          "None": 17
+        },
+        "None": {
+          "Graphic Violence": 1,
+          "Self-harm Indicators": 5,
+          "Threat Language": 0,
+          "None": 74
+        }
+      },
+      "per_label": {
+        "Graphic Violence": {
+          "precision": 0.6667,
+          "recall": 0.05,
+          "f1": 0.093,
+          "support": 40
+        },
+        "Self-harm Indicators": {
+          "precision": 0.678,
+          "recall": 1.0,
+          "f1": 0.8081,
+          "support": 40
+        },
+        "Threat Language": {
+          "precision": 1.0,
+          "recall": 0.375,
+          "f1": 0.5455,
+          "support": 40
+        },
+        "None": {
+          "precision": 0.6016,
+          "recall": 0.925,
+          "f1": 0.7291,
+          "support": 80
+        }
+      },
+      "samples": 200,
+      "accuracy": 0.655,
+      "macro_f1": 0.5439,
+      "harmful_detection_rate": 0.5917,
+      "false_positive_rate": 0.075
+    },
+    "morvix-lexicon-v1": {
+      "labels": [
+        "Graphic Violence",
+        "Self-harm Indicators",
+        "Threat Language",
+        "None"
+      ],
+      "matrix": {
+        "Graphic Violence": {
+          "Graphic Violence": 2,
+          "Self-harm Indicators": 0,
+          "Threat Language": 0,
+          "None": 38
+        },
+        "Self-harm Indicators": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 9,
+          "Threat Language": 0,
+          "None": 31
+        },
+        "Threat Language": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 10,
+          "None": 30
+        },
+        "None": {
+          "Graphic Violence": 1,
+          "Self-harm Indicators": 1,
+          "Threat Language": 0,
+          "None": 78
+        }
+      },
+      "per_label": {
+        "Graphic Violence": {
+          "precision": 0.6667,
+          "recall": 0.05,
+          "f1": 0.093,
+          "support": 40
+        },
+        "Self-harm Indicators": {
+          "precision": 0.9,
+          "recall": 0.225,
+          "f1": 0.36,
+          "support": 40
+        },
+        "Threat Language": {
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4,
+          "support": 40
+        },
+        "None": {
+          "precision": 0.4407,
+          "recall": 0.975,
+          "f1": 0.607,
+          "support": 80
+        }
+      },
+      "samples": 200,
+      "accuracy": 0.495,
+      "macro_f1": 0.365,
+      "harmful_detection_rate": 0.175,
+      "false_positive_rate": 0.025
+    },
+    "KoalaAI/Text-Moderation": {
+      "labels": [
+        "Graphic Violence",
+        "Self-harm Indicators",
+        "Threat Language",
+        "None"
+      ],
+      "matrix": {
+        "Graphic Violence": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 0,
+          "None": 40
+        },
+        "Self-harm Indicators": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 14,
+          "Threat Language": 0,
+          "None": 26
+        },
+        "Threat Language": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 0,
+          "None": 40
+        },
+        "None": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 1,
+          "Threat Language": 0,
+          "None": 79
+        }
+      },
+      "per_label": {
+        "Graphic Violence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        },
+        "Self-harm Indicators": {
+          "precision": 0.9333,
+          "recall": 0.35,
+          "f1": 0.5091,
+          "support": 40
+        },
+        "Threat Language": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        },
+        "None": {
+          "precision": 0.427,
+          "recall": 0.9875,
+          "f1": 0.5962,
+          "support": 80
+        }
+      },
+      "samples": 200,
+      "accuracy": 0.465,
+      "macro_f1": 0.2763,
+      "harmful_detection_rate": 0.1167,
+      "false_positive_rate": 0.0125
+    },
+    "sentinet/suicidality": {
+      "labels": [
+        "Graphic Violence",
+        "Self-harm Indicators",
+        "Threat Language",
+        "None"
+      ],
+      "matrix": {
+        "Graphic Violence": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 6,
+          "Threat Language": 0,
+          "None": 34
+        },
+        "Self-harm Indicators": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 38,
+          "Threat Language": 0,
+          "None": 2
+        },
+        "Threat Language": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 9,
+          "Threat Language": 0,
+          "None": 31
+        },
+        "None": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 4,
+          "Threat Language": 0,
+          "None": 76
+        }
+      },
+      "per_label": {
+        "Graphic Violence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        },
+        "Self-harm Indicators": {
+          "precision": 0.6667,
+          "recall": 0.95,
+          "f1": 0.7835,
+          "support": 40
+        },
+        "Threat Language": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        },
+        "None": {
+          "precision": 0.5315,
+          "recall": 0.95,
+          "f1": 0.6816,
+          "support": 80
+        }
+      },
+      "samples": 200,
+      "accuracy": 0.57,
+      "macro_f1": 0.3663,
+      "harmful_detection_rate": 0.4417,
+      "false_positive_rate": 0.05
+    },
+    "unitary/toxic-bert": {
+      "labels": [
+        "Graphic Violence",
+        "Self-harm Indicators",
+        "Threat Language",
+        "None"
+      ],
+      "matrix": {
+        "Graphic Violence": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 0,
+          "None": 40
+        },
+        "Self-harm Indicators": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 0,
+          "None": 40
+        },
+        "Threat Language": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 16,
+          "None": 24
+        },
+        "None": {
+          "Graphic Violence": 0,
+          "Self-harm Indicators": 0,
+          "Threat Language": 0,
+          "None": 80
+        }
+      },
+      "per_label": {
+        "Graphic Violence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        },
+        "Self-harm Indicators": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        },
+        "Threat Language": {
+          "precision": 1.0,
+          "recall": 0.4,
+          "f1": 0.5714,
+          "support": 40
+        },
+        "None": {
+          "precision": 0.4348,
+          "recall": 1.0,
+          "f1": 0.6061,
+          "support": 80
+        }
+      },
+      "samples": 200,
+      "accuracy": 0.48,
+      "macro_f1": 0.2944,
+      "harmful_detection_rate": 0.1333,
+      "false_positive_rate": 0.0
+    }
+  },
+  "ensemble_errors": [
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.2569,
+      "kind": "direct",
+      "decided_by": [
+        "KoalaAI/Text-Moderation"
+      ],
+      "text": "Keep talking and see what happens to you after school."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "direct",
+      "decided_by": null,
+      "text": "I'm coming to your house tonight and you won't like what I do."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "direct",
+      "decided_by": null,
+      "text": "You better sleep with one eye open from now on."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9199,
+      "kind": "direct",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "One more word and I will put you in the hospital."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.2298,
+      "kind": "direct",
+      "decided_by": [
+        "unitary/toxic-bert"
+      ],
+      "text": "I'll make sure you never walk again."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9759,
+      "kind": "direct",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "I've got a knife in my bag and it has your name on it."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.4669,
+      "kind": "direct",
+      "decided_by": [
+        "unitary/toxic-bert"
+      ],
+      "text": "I am going to shoot everyone in that classroom on Friday."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "direct",
+      "decided_by": null,
+      "text": "We know where your family lives. Pay up or else."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9569,
+      "kind": "direct",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "I will find you and I will end you."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "direct",
+      "decided_by": null,
+      "text": "bring that attitude to school monday and ur getting jumped"
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.8297,
+      "kind": "direct",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "Say goodbye to your friends, you won't see them after this weekend."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "direct",
+      "decided_by": null,
+      "text": "Watch what happens when you're walking home alone."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "online",
+      "decided_by": null,
+      "text": "gonna dox you and send people to your door, enjoy"
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "online",
+      "decided_by": null,
+      "text": "You have 24 hours to send the money or the pictures go out and so do you."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "online",
+      "decided_by": null,
+      "text": "Our group is planning to attack the mosque on Sunday, be ready."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9803,
+      "kind": "online",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "I hope you're ready because I'm bringing my dad's gun tomorrow."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.3054,
+      "kind": "online",
+      "decided_by": [
+        "unitary/toxic-bert"
+      ],
+      "text": "run while you can, me and the boys are coming for you"
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9316,
+      "kind": "online",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "I'll slit your throat while you sleep."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.447,
+      "kind": "online",
+      "decided_by": [
+        "unitary/toxic-bert"
+      ],
+      "text": "Someone should put a bullet in that teacher and I might be the one."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.933,
+      "kind": "online",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "If she breaks up with me I'll kill her."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "online",
+      "decided_by": null,
+      "text": "We're going to make an example of you in front of everyone."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "online",
+      "decided_by": null,
+      "text": "you're next on my list. tick tock."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.4346,
+      "kind": "online",
+      "decided_by": [
+        "unitary/toxic-bert"
+      ],
+      "text": "I will hunt down every one of you who laughed at me."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "online",
+      "decided_by": null,
+      "text": "I know your schedule. Don't be surprised when I'm waiting."
+    },
+    {
+      "truth": "Threat Language",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9191,
+      "kind": "online",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "Expose me and I'll make your life end, not just your reputation."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "His skull was cracked open and brain matter was splattered across the pavement."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "The footage shows the man's intestines spilling out after the blade tore through him."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "Blood sprayed from the stump where his hand used to be."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "They found her body in pieces, limbs scattered around the basement."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "The dog was skinned alive while the crowd cheered."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "Close-up video of the victim's eye being gouged out with a screwdriver."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "The crash left the driver's face peeled off and bones sticking through his legs."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "They kept hitting him with the hammer until his face was unrecognisable."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "Uncensored clip: the prisoner is beheaded and the head is held up to the camera."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "The floor was slick with blood and chunks of flesh after the explosion."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9267,
+      "kind": "description",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "She was stabbed forty times and left bleeding out in the hallway."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "Watch the cartel execution video, they chainsaw the guy while he screams."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9165,
+      "kind": "description",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "The burned bodies were still smoking, fused together in the wreckage."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.2882,
+      "kind": "description",
+      "decided_by": [
+        "KoalaAI/Text-Moderation"
+      ],
+      "text": "His throat was slashed and he gurgled blood until he stopped moving."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "Bones crunched as the car rolled over the cyclist's chest."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "The shooter walked down the aisle firing into the screaming children."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.4106,
+      "kind": "description",
+      "decided_by": [
+        "KoalaAI/Text-Moderation"
+      ],
+      "text": "Maggots crawled out of the rotting wound on the corpse's neck."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9532,
+      "kind": "description",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "They dragged him behind the truck until there was nothing left of his back."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.3155,
+      "kind": "description",
+      "decided_by": [
+        "KoalaAI/Text-Moderation"
+      ],
+      "text": "The bear ripped the hiker's scalp off and blood poured over his eyes."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "Leaked photos show the victims' severed heads lined up on the wall."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "He bashed the cat against the wall until it stopped twitching."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.3798,
+      "kind": "description",
+      "decided_by": [
+        "KoalaAI/Text-Moderation"
+      ],
+      "text": "The grenade blew his legs apart and he crawled through his own blood."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "The killer carved symbols into the victim's chest while she was still alive."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "The gang member was set on fire and filmed screaming as his skin melted."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "Brutal fight video: he stomps on the guy's head until it caves in."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.2363,
+      "kind": "description",
+      "decided_by": [
+        "KoalaAI/Text-Moderation"
+      ],
+      "text": "Her jaw was hanging off and teeth were scattered across the floor."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.2324,
+      "kind": "description",
+      "decided_by": [
+        "KoalaAI/Text-Moderation"
+      ],
+      "text": "The machete split his arm open down to the bone."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9522,
+      "kind": "description",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "Bodies lay in the street with their stomachs torn open by the blast."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "The video shows a man being crushed by the machine, blood gushing everywhere."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "They bled the pig while it was still conscious and squealing, full uncut video."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "His eyeball dangled from the socket after the beating."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "The soldier's body was ripped in half by the shell."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9734,
+      "kind": "description",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "The victim was tied up and slowly cut with razors for hours."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.7676,
+      "kind": "description",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "Blood was pouring from the bullet holes in his chest as he collapsed."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "He smashed the bottle into her face and glass stuck out of her cheek."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "The mob kicked the man's head until blood came out of his ears."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "The surgeon-style video shows a live animal being cut open without anesthetic."
+    },
+    {
+      "truth": "Graphic Violence",
+      "predicted": "None",
+      "confidence": 0.0,
+      "kind": "description",
+      "decided_by": null,
+      "text": "Her arm was torn off by the machine and the stump sprayed blood."
+    },
+    {
+      "truth": "None",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9546,
+      "kind": "hard_negative",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "Self-harm is more common than people think; here is how to support a friend who is struggling."
+    },
+    {
+      "truth": "None",
+      "predicted": "Graphic Violence",
+      "confidence": 0.5361,
+      "kind": "hard_negative",
+      "decided_by": [
+        "morvix-lexicon-v1"
+      ],
+      "text": "The history lesson covered the massacre at Wounded Knee in 1890."
+    },
+    {
+      "truth": "None",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.5746,
+      "kind": "hard_negative",
+      "decided_by": [
+        "KoalaAI/Text-Moderation"
+      ],
+      "text": "My mom will kill me if I'm late again haha."
+    },
+    {
+      "truth": "None",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9656,
+      "kind": "hard_negative",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "My friend felt hopeless last year but therapy really helped her."
+    },
+    {
+      "truth": "None",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9339,
+      "kind": "hard_negative",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "Stop the bleeding by applying firm pressure with a clean cloth, then call for help."
+    },
+    {
+      "truth": "None",
+      "predicted": "Self-harm Indicators",
+      "confidence": 0.9489,
+      "kind": "hard_negative",
+      "decided_by": [
+        "sentinet/suicidality"
+      ],
+      "text": "That roller coaster was insane, I thought I was going to die!"
+    }
+  ]
+}

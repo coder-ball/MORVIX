@@ -1,0 +1,62 @@
+{
+  "morvix-text-ensemble": {
+    "dataset": "MORVIX held-out text test set v1 (160 rows)",
+    "samples": 160,
+    "accuracy": 0.9,
+    "macro_f1": 0.8955,
+    "harmful_detection_rate": 0.9222,
+    "false_positive_rate": 0.0857,
+    "threshold": 0.5,
+    "evaluated_at": "2026-11-10"
+  },
+  "morvix-lexicon-v1": {
+    "dataset": "MORVIX held-out text test set v1 (160 rows)",
+    "samples": 160,
+    "accuracy": 0.525,
+    "macro_f1": 0.3735,
+    "harmful_detection_rate": 0.1667,
+    "false_positive_rate": 0.0143,
+    "threshold": 0.5,
+    "evaluated_at": "2026-11-10"
+  },
+  "MoritzLaurer/deberta-v3-base-zeroshot-v2.0": {
+    "dataset": "MORVIX held-out text test set v1 (160 rows)",
+    "samples": 160,
+    "accuracy": 0.825,
+    "macro_f1": 0.7939,
+    "harmful_detection_rate": 0.8222,
+    "false_positive_rate": 0.0714,
+    "threshold": 0.5,
+    "evaluated_at": "2026-11-10"
+  },
+  "KoalaAI/Text-Moderation": {
+    "dataset": "MORVIX held-out text test set v1 (160 rows)",
+    "samples": 160,
+    "accuracy": 0.525,
+    "macro_f1": 0.3183,
+    "harmful_detection_rate": 0.1667,
+    "false_positive_rate": 0.0,
+    "threshold": 0.5,
+    "evaluated_at": "2026-11-10"
+  },
+  "sentinet/suicidality": {
+    "dataset": "MORVIX held-out text test set v1 (160 rows)",
+    "samples": 160,
+    "accuracy": 0.6,
+    "macro_f1": 0.3789,
+    "harmful_detection_rate": 0.4222,
+    "false_positive_rate": 0.0286,
+    "threshold": 0.5,
+    "evaluated_at": "2026-11-10"
+  },
+  "unitary/toxic-bert": {
+    "dataset": "MORVIX held-out text test set v1 (160 rows)",
+    "samples": 160,
+    "accuracy": 0.5375,
+    "macro_f1": 0.3375,
+    "harmful_detection_rate": 0.1778,
+    "false_positive_rate": 0.0,
+    "threshold": 0.5,
+    "evaluated_at": "2026-11-10"
+  }
+}
