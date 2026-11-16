@@ -8,6 +8,17 @@ You can use it to:
 * Set protection rules: allow content, show a warning, or block it.
 * Review detection history, alerts and analytics in the dashboard.
 
+## Final system evidence (screenshots)
+
+Captured from the running system on 16 Nov 2026 (local server, parent dashboard).
+
+| | |
+|---|---|
+| **Sign-in**<br>![Sign-in](docs/screenshots/01-sign-in.jpg) | **Dashboard**<br>![Dashboard](docs/screenshots/02-dashboard.jpg) |
+| **Test classifiers: sample threat sentence flagged by the local AI engines**<br>![Test classifiers result](docs/screenshots/03-test-classifiers-result.jpg) | **Alerts**<br>![Alerts](docs/screenshots/04-alerts.jpg) |
+| **Detection history**<br>![Detection history](docs/screenshots/05-detection-history.jpg) | **Analytics**<br>![Analytics](docs/screenshots/06-analytics.jpg) |
+| **Extension status / pairing**<br>![Extension status](docs/screenshots/07-extension-status.jpg) | |
+
 MORVIX only sees content that the extension can access on supported sites; it does not monitor the whole device. On the team's held-out text test set (160 short synthetic sentences) the text pipeline scored **accuracy 0.90, macro-F1 0.90, with 92 % of harmful sentences detected and 8.6 % false positives** ([evaluation](docs/EVALUATION.md)). That small set does not show it is reliable on real browsing, and image/video detection is not evaluated, so treat it as a student prototype, not a dependable safety or crisis-detection tool. The specification is in [`docs/MORVIX_SRS_v3.docx`](docs/MORVIX_SRS_v3.docx).
 
 ## Everyday use (no VS Code or terminal)
