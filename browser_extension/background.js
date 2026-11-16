@@ -84,17 +84,17 @@ const handlers = {
   sync: () => sync(),
   status: () => chrome.storage.local.get(STORE),
   // Also used to move an already-paired browser to another parent account (e.g. the parent forgot the
-  // old one). The old token is kept until the new code is accepted, so a wrong code changes nothing.
+  // old one). The current token is sent along, so the server ends the old pairing and emails the old
+  // parent in the same step. A wrong code changes nothing.
   async pair(msg) {
     if (!msg.code) throw Error('Paste a pairing code first');
-    const { token: old } = await chrome.storage.local.get(['token']);
-    const r = await fetch(API + '/extensions/pair', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code: msg.code, name: 'MORVIX Chromium' }) });
+    const { token: previous_token } = await chrome.storage.local.get(['token']);
+    const r = await fetch(API + '/extensions/pair', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code: msg.code, name: 'MORVIX Chromium', previous_token: previous_token || null }) });
     const d = await r.json().catch(() => ({}));
     if (!r.ok) throw Error(typeof d.detail === 'string' ? d.detail : 'Pairing code invalid or expired');
     await chrome.storage.local.set({ token: d.extension_token, connectionError: '' });
-    // Best effort: tell the server to end the old pairing so the old account shows this browser as removed.
-    if (old && old !== d.extension_token) fetch(API + '/extensions/self/release', { method: 'POST', headers: { Authorization: 'Bearer ' + old } }).catch(() => {});
-    return { ok: true, ...(await sync()) };
+    return { ok: true, previousAccountNotified: !!d.previous_account_notified, ...(await sync()) };
   },
   // Page text is posted from here, not from the content script: a content script's request counts as
   // a cross-site request from the web page and the MORVIX server refuses it (CORS), whereas the service

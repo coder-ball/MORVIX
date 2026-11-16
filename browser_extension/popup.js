@@ -52,7 +52,7 @@ $('#pair').onclick = () => chrome.runtime.sendMessage({ type: 'pair', code: $('#
   const switched = repairing;
   repairing = false; $('#code').value = '';
   status(false);
-  say(switched ? 'Connected to the new parent account' : 'Paired and synchronized', true);
+  say(switched ? 'Connected to the new parent account' + (r.previousAccountNotified ? '. The previous account was emailed.' : '') : 'Paired and synchronized', true);
 });
 $('#sync').onclick = () => chrome.runtime.sendMessage({ type: 'sync' }, r => { status(false); say(r?.connected ? 'Policy synchronized' : 'MORVIX server unavailable; the last policy stays in effect', !!r?.connected); });
 function say(text, ok) { $('#msg').textContent = text; $('#msg').style.color = ok ? '#24785a' : '#a73b4e'; }

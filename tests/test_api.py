@@ -223,16 +223,29 @@ def test_extension_turn_off_and_on_keeps_pairing():
     assert client.patch('/api/v1/extensions/'+eid,headers=h,json={'paused':False}).status_code==404  # removed browsers need a new code
     eh2=paired(h);assert client.get('/api/v1/extensions/policy',headers=eh2).status_code==200  # same parent can pair again
 
-def test_paired_browser_can_move_to_a_new_parent_account():
-    # Parent forgot the old account and made a new one: the extension pairs with the new code, then releases the old pairing.
+def test_paired_browser_can_move_to_a_new_parent_account_and_old_parent_is_emailed():
+    # Parent forgot the old account and made a new one: the extension pairs with the new account's code and
+    # sends its current token, so the server ends the old pairing and emails the old parent.
     old,_=account('forgot-old@example.test');new,_=account('forgot-new@example.test')
-    eh_old=paired(old);eh_new=paired(new)
-    assert client.post('/api/v1/extensions/self/release',headers=eh_old).status_code==204
-    assert client.get('/api/v1/extensions/policy',headers=eh_old).status_code==401
-    assert client.get('/api/v1/extensions/policy',headers=eh_new).status_code==200
+    moved=lambda:[(m['to'],m['subject'],m['text']) for m in SENT if 'moved' in m['subject']]
+    sent=moved()
+    old_token=paired(old)['Authorization'][7:]
+    bad=client.post('/api/v1/extensions/pair',json={'code':'x'*30,'previous_token':old_token})
+    assert bad.status_code==400 and not sent  # a wrong code changes nothing
+    assert client.get('/api/v1/extensions/policy',headers={'Authorization':'Bearer '+old_token}).status_code==200
+    code=client.post('/api/v1/extensions/pair-code',headers=new).json()['code']
+    d=client.post('/api/v1/extensions/pair',json={'code':code,'previous_token':old_token}).json()
+    assert d['previous_account_notified'] is True;sent=moved()
+    assert client.get('/api/v1/extensions/policy',headers={'Authorization':'Bearer '+old_token}).status_code==401
+    assert client.get('/api/v1/extensions/policy',headers={'Authorization':'Bearer '+d['extension_token']}).status_code==200
     assert client.get('/api/v1/extensions',headers=old).json()[0]['status']=='revoked'
-    assert client.get('/api/v1/extensions',headers=new).json()[0]['status']!='revoked'
-    assert client.post('/api/v1/extensions/self/release').status_code==401  # needs an extension token
+    assert len(sent)==1 and sent[0][0]=='forgot-old@example.test' and 'different' in sent[0][2]
+    # Re-pairing to the SAME account (or with a token that is no longer valid) sends no email.
+    code=client.post('/api/v1/extensions/pair-code',headers=new).json()['code']
+    d2=client.post('/api/v1/extensions/pair',json={'code':code,'previous_token':d['extension_token']}).json()
+    assert d2['previous_account_notified'] is False and len(moved())==1
+    code=client.post('/api/v1/extensions/pair-code',headers=new).json()['code']
+    assert client.post('/api/v1/extensions/pair',json={'code':code,'previous_token':old_token}).json()['previous_account_notified'] is False
 
 
 # ---- v3 additions ----

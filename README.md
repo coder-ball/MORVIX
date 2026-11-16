@@ -60,7 +60,7 @@ Without `requirements-ml.txt` and the weights, MORVIX still runs: text uses the 
 2. Open `chrome://extensions` (or `edge://extensions`), turn on **Developer mode**, choose **Load unpacked**, and select the `browser_extension` folder.
 3. Open the MORVIX popup, paste the code, and choose **Pair extension**. The popup shows connection, protection state, the active modalities and the last sync.
 
-**Moving the extension to a different parent account** (e.g. the parent forgot the old account and created a new one): sign in to the new account → **Generate pairing code**, then in the popup choose **Connect to a different parent account**, paste the code and choose **Switch account**. The old pairing is kept until the new code is accepted; afterwards the old account lists this browser as removed.
+**Moving the extension to a different parent account** (e.g. the parent forgot the old account and created a new one): sign in to the new account → **Generate pairing code**, then in the popup choose **Connect to a different parent account**, paste the code and choose **Switch account**. The old pairing is kept until the new code is accepted; afterwards the old account lists this browser as removed **and its email address is sent a notice** that the browser was moved. This means a child cannot quietly move protection to an account of their own, while a parent who forgot the old account can still switch (the notice needs the `MORVIX_SMTP_*` email settings; without them the switch still works and the failure is logged).
 
 ## What is in the system
 

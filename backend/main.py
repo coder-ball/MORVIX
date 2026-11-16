@@ -9,7 +9,7 @@ from contextlib import asynccontextmanager
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from urllib.parse import urlparse, quote
-from fastapi import FastAPI, Depends, HTTPException, Header, UploadFile, File, Query, Request
+from fastapi import FastAPI, Depends, HTTPException, Header, UploadFile, File, Query, Request, BackgroundTasks
 from starlette.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, field_validator
@@ -263,6 +263,8 @@ class EventIn(BaseModel):
 class PairIn(BaseModel):
     code: str = Field(min_length=20, max_length=100)
     name: str = Field(default="MORVIX browser", max_length=80)
+    # Set when an already-paired browser is moved to another parent account: the browser's current token.
+    previous_token: str | None = Field(default=None, max_length=200)
 
 
 def issue_session(uid, email):
@@ -584,8 +586,28 @@ def pair_code(uid: str = Depends(auth)):
     return {"code": code, "expires_in": 600}
 
 
+def notify_browser_moved(email, browser_name, when):
+    """Tell the previous parent that their browser now reports to a different account, so a child
+    cannot quietly move protection to an account of their own. Failures are logged, never raised."""
+    text = (f"A browser that was paired with your MORVIX account ({browser_name}) was connected to a different "
+            f"MORVIX parent account on {when}. It no longer reports to you.\n\n"
+            "If you did this yourself (for example after creating a new account), no action is needed.\n"
+            "If you did not, check the browser: open the MORVIX extension popup and pair it again with a code "
+            "from your dashboard (Extension status > Generate pairing code).")
+    html = ("<p>A browser that was paired with your MORVIX account (<b>" + browser_name.replace("<", "&lt;") + "</b>) "
+            f"was connected to a <b>different MORVIX parent account</b> on {when}. It no longer reports to you.</p>"
+            "<p>If you did this yourself (for example after creating a new account), no action is needed.</p>"
+            "<p>If you did not, check the browser: open the MORVIX extension popup and pair it again with a code "
+            "from your dashboard (<i>Extension status &rsaquo; Generate pairing code</i>).</p>")
+    try:
+        mailer.send_mail(email, "MORVIX: a browser was moved to another parent account", text, html)
+    except mailer.MailError as e:
+        import sys
+        print(f"[MORVIX email] browser-moved notice to the previous account not sent: {e}", file=sys.stderr, flush=True)
+
+
 @app.post("/api/v1/extensions/pair", status_code=201)
-def pair(x: PairIn, request: Request):
+def pair(x: PairIn, request: Request, background: BackgroundTasks):
     who = request.client.host if request.client else "?"
     recent = [t for t in _pair_failures.get(who, []) if time.time() - t < 60]
     if len(recent) >= 10:  # FR-CON-03: throttle guessing
@@ -599,7 +621,20 @@ def pair(x: PairIn, request: Request):
         eid = secrets.token_hex(16)
         c.execute("DELETE FROM pair_codes WHERE code_hash=?", (digest(x.code),))
         c.execute("INSERT INTO extensions(id,token_hash,user_id,name,created_at,last_seen) VALUES(?,?,?,?,?,?)", (eid, digest(token), r["user_id"], x.name, now(), now()))
-    return {"extension_token": token, "extension_id": eid}
+        moved_from = None
+        if x.previous_token:
+            # The browser is switching accounts: end its old pairing in the same step and, if it belonged
+            # to a different parent, email that parent.
+            old = c.execute("SELECT e.id,e.user_id,e.name,u.email FROM extensions e JOIN users u ON u.id=e.user_id "
+                            "WHERE e.token_hash=? AND e.revoked=0", (digest(x.previous_token),)).fetchone()
+            if old:
+                c.execute("UPDATE extensions SET revoked=1 WHERE id=?", (old["id"],))
+                if old["user_id"] != r["user_id"]:
+                    moved_from = old
+    if moved_from:
+        background.add_task(notify_browser_moved, moved_from["email"], moved_from["name"],
+                            datetime.now().astimezone().strftime("%d %b %Y, %H:%M"))
+    return {"extension_token": token, "extension_id": eid, "previous_account_notified": bool(moved_from)}
 
 
 def is_connected(last_seen):
@@ -639,14 +674,6 @@ def revoke(eid: str, uid: str = Depends(auth)):
         r = c.execute("UPDATE extensions SET revoked=1 WHERE id=? AND user_id=?", (eid, uid))
     if not r.rowcount:
         raise HTTPException(404, "Extension not found")
-
-
-@app.post("/api/v1/extensions/self/release", status_code=204)
-def release_self(ext: dict = Depends(ext_auth)):
-    """Called by the extension with its OLD token after it was paired to a different parent account,
-    so the old account lists this browser as removed instead of 'disconnected'."""
-    with db() as c:
-        c.execute("UPDATE extensions SET revoked=1 WHERE id=?", (ext["id"],))
 
 
 def ext_paused(ext, modality):
