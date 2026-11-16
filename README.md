@@ -8,16 +8,49 @@ You can use it to:
 * Set protection rules: allow content, show a warning, or block it.
 * Review detection history, alerts and analytics in the dashboard.
 
-## Final system evidence (screenshots)
+## Final deliverables
 
-Captured from the running system on 16 Nov 2026 (local server, parent dashboard).
+| Deliverable | Where |
+|---|---|
+| Final SRS | [`docs/MORVIX_SRS_v3.docx`](docs/MORVIX_SRS_v3.docx) · [PDF](docs/MORVIX_SRS_v3.pdf) |
+| Final wireframes (Figma) | [Figma: MORVIX wireframes](https://www.figma.com/design/5lUXumwGgXLc2AnKlrKPZp/Untitled) · images in [`docs/evidence/wireframes/`](docs/evidence/wireframes) |
+| Final mockups (Figma) | [Figma: MORVIX Mockups](https://www.figma.com/design/iaeYsUBRXYoJTzVXetiUHk/MORVIX-Mockups) · images in [`docs/evidence/mockups/`](docs/evidence/mockups) |
+| Final system | This repository (v3.7.3); setup in [Quick start](#quick-start-windows-powershell-from-this-folder) below |
+| Diagrams (SDLC, architecture, UML deployment) | [`docs/evidence/diagrams/`](docs/evidence/diagrams) |
+| Evidence screenshots | [`docs/screenshots/`](docs/screenshots) and the gallery below |
+
+### Wireframes (low fidelity, August 2026)
+
+| | |
+|---|---|
+| **Parent dashboard**<br>![Wireframe: parent dashboard](docs/evidence/wireframes/01-parent-dashboard.png) | **Detection details**<br>![Wireframe: detection details](docs/evidence/wireframes/02-detection-details.png) |
+| **Protection settings**<br>![Wireframe: protection settings](docs/evidence/wireframes/03-protection-settings.png) | **Extension popup**<br>![Wireframe: extension popup](docs/evidence/wireframes/04-extension-popup.png) |
+| **Content blocked**<br>![Wireframe: content blocked](docs/evidence/wireframes/05-blocked-content.png) | |
+
+### Mockups (high fidelity, Figma)
+
+Made in Figma on 16 Nov 2026 from the implemented interface; they record the design system the system follows.
+
+| | |
+|---|---|
+| **Sign-in**<br>![Mockup: sign-in](docs/evidence/mockups/01-sign-in.png) | **Dashboard**<br>![Mockup: dashboard](docs/evidence/mockups/02-dashboard.png) |
+| **Settings**<br>![Mockup: settings](docs/evidence/mockups/03-settings.png) | **Extension popup**<br>![Mockup: extension popup](docs/evidence/mockups/04-extension-popup.png) |
+| **Page hidden**<br>![Mockup: page hidden](docs/evidence/mockups/05-page-hidden.png) | **Design system**<br>![Mockup: design system](docs/evidence/mockups/06-design-system.png) |
+
+### Final system evidence (screenshots)
+
+Captured from the running system on 16 Nov 2026 (local server, parent dashboard, and the real extension loaded in Microsoft Edge). Detections come from the project's fictional test pages (`/demo/`) on a demonstration account.
 
 | | |
 |---|---|
 | **Sign-in**<br>![Sign-in](docs/screenshots/01-sign-in.jpg) | **Dashboard**<br>![Dashboard](docs/screenshots/02-dashboard.jpg) |
+| **Create account**<br>![Create account](docs/screenshots/08-create-account.png) | **Email verification code**<br>![Email verification](docs/screenshots/09-email-verification.jpg) |
 | **Test classifiers: sample threat sentence flagged by the local AI engines**<br>![Test classifiers result](docs/screenshots/03-test-classifiers-result.jpg) | **Alerts**<br>![Alerts](docs/screenshots/04-alerts.jpg) |
 | **Detection history**<br>![Detection history](docs/screenshots/05-detection-history.jpg) | **Analytics**<br>![Analytics](docs/screenshots/06-analytics.jpg) |
-| **Extension status / pairing**<br>![Extension status](docs/screenshots/07-extension-status.jpg) | |
+| **Extension status / pairing**<br>![Extension status](docs/screenshots/07-extension-status.jpg) | **Settings**<br>![Settings](docs/screenshots/10-settings.png) |
+| **Domain & category rules**<br>![Rules](docs/screenshots/11-domain-category-rules.png) | **Extension popup before / after pairing**<br>![Popup unpaired](docs/screenshots/12-extension-popup-unpaired.png) ![Popup paired](docs/screenshots/13-extension-popup-paired.png) |
+| **Page held behind the "checking" cover**<br>![Checking cover](docs/screenshots/14-page-checking-cover.png) | **Threat page hidden**<br>![Threat page hidden](docs/screenshots/15-threat-page-hidden.png) |
+| **Graphic violence page hidden**<br>![Violence page hidden](docs/screenshots/16-violence-page-hidden.png) | **Safe page shown normally**<br>![Safe page](docs/screenshots/17-safe-page-shown.png) |
 
 MORVIX only sees content that the extension can access on supported sites; it does not monitor the whole device. On the team's held-out text test set (160 short synthetic sentences) the text pipeline scored **accuracy 0.90, macro-F1 0.90, with 92 % of harmful sentences detected and 8.6 % false positives** ([evaluation](docs/EVALUATION.md)). That small set does not show it is reliable on real browsing, and image/video detection is not evaluated, so treat it as a student prototype, not a dependable safety or crisis-detection tool. The specification is in [`docs/MORVIX_SRS_v3.docx`](docs/MORVIX_SRS_v3.docx).
 
